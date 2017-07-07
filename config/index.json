@@ -1,4 +1,5 @@
 {
-  "dbUri": "mongodb://localhost/biobuild",
+  "dbUri": "mongodb://heroku_m9h9c554:4c2ltuigdnqbtapotpsbcfk6fa@ds151242.mlab.com:51242/heroku_m9h9c554
+",
   "jwtSecret": "a secret phrase!!"
 }

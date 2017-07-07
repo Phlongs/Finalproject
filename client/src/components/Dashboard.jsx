@@ -42,9 +42,38 @@ const Dashboard = ({
 
       <div className="field-line">
         <TextField
+          floatingLabelText="Phone Number"
+          name="phone"
+
+        />
+      </div>
+
+      <div className="field-line">
+        <TextField
           floatingLabelText="Education"
           name="education"
 
+        />
+      </div>
+
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Experience"
+          name="experience"
+        />
+      </div>
+
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Link to Port 1"
+          name="port1"
+        />
+      </div>
+
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Link to Port 2"
+          name="port2"
         />
       </div>
 

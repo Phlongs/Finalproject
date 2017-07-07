@@ -25,13 +25,17 @@ class BioPage extends React.Component {
                     userInfo: xhr.response
                 });
             }
+           console.log(userInfo)
         });
         xhr.send();
     }
+   
     render(){
+
         return(
             <Bio
-            user={this.state.userInfo}/>
+                user={this.state.userInfo}/>
+
             )
     }
 

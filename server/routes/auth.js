@@ -6,11 +6,18 @@ const multiparty = require('multiparty');
 const fs = require('fs');
 const multer  = require('multer');
 const upload = multer({ dest: 'uploads/' });
+var cloudinary = require('cloudinary');
 
 const router = new express.Router();
 
 
 let email = '';
+
+cloudinary.config({ 
+  cloud_name: 'ho2ypcaei', 
+  api_key: '197927375455319', 
+  api_secret: 'UH7WxxEA4lzKJ0hFAvJLqKGB3Xg' 
+});
 /**
  * Validate the sign up form
  *
@@ -165,6 +172,10 @@ router.post('/bio', (req,res,next)=>{
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.education = req.body.education;
+    user.phone = req.body.phone;
+    user.experience = req.body.experience;
+    user.port1 = req.body.port1;
+    user.port2 = req.body.port2;
 
     user.save(user, function(err){
       if(err) {
@@ -182,32 +193,32 @@ router.post('/uploads', (req, res) => {
 
   form.parse(req, (err, fields, files) => {
 
-    let {path: tempPath, originalFilename} = files.imageFile[0];
-    let newPath = "../../../uploads/" + originalFilename;
+    let path = files.imageFile[0].path;
+    let originalFilename = files.imageFile[0].originalFilename;
+    let newPath = "./uploads/" + originalFilename;
+    let newPicPath = '';
     let splitName = originalFilename.toLowerCase().split('.');
+    console.log(originalFilename)
 
-    fs.readFile(tempPath, (err, data) => {
-      // make copy of image to new location
-      fs.writeFile(newPath, data, (err) => {
-        // delete temp image
-        fs.unlink(tempPath, () => {
-          res.send("File uploaded to: " + newPath);
-        });
-      }); 
-    }); 
 
+    
     if(splitName[1] === 'jpg' || splitName[1] === 'png' || splitName[1] ==='tiff' || splitName[1]==='jpeg' || splitName[1]==='gif') {
-    User.findOne({ email: email }, (err, user) => {
-    user.profilePic = newPath;
+    
+      cloudinary.uploader.upload(path, function(result) { 
+        console.log('result: ',result.url)
+        User.findOne({ email: email }, (err, user) => {
 
-    user.save(user, function(err){
-      if(err) {
+          user.profilePic = result.url; 
+
+          user.save(user, function(err){
+        if(err) {
         console.log('ERROR!');
-      } else {
+        } else {
         console.log('saved');
-      }
-    });
-    });
+        }
+        });
+        });
+      });
     } else {
       User.findOne({ email: email }, (err, user) => {
       user.resume = newPath;

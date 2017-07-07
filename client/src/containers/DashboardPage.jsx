@@ -96,7 +96,11 @@ class DashboardPage extends React.Component {
     const firstName = encodeURIComponent(event.target.firstName.value);
     const lastName = encodeURIComponent(event.target.lastName.value);
     const education = encodeURIComponent(event.target.education.value);
-    const formData = `firstName=${firstName}&lastName=${lastName}&education=${education}`;
+    const phone = encodeURIComponent(event.target.phone.value);
+    const experience = encodeURIComponent(event.target.experience.value);
+    const port1 = encodeURIComponent(event.target.port1.value);
+    const port2 = encodeURIComponent(event.target.port2.value);
+    const formData = `firstName=${firstName}&lastName=${lastName}&education=${education}&phone=${phone}&experience=${experience}&port1=${port1}&port2=${port2}`;
 
     //create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -108,7 +112,6 @@ class DashboardPage extends React.Component {
 
       if (xhr.status === 200) {
         // success
-        console.log('hello world')
 
         // change the component-container state
         this.setState({

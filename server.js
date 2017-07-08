@@ -13,9 +13,14 @@ app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 // tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
+
+
 // pass the passport middleware
 app.use(passport.initialize());
-
+var exphbs = require("express-handlebars");
+app.use(express.static(process.cwd() + "/public"));
+app.engine("handlebars",exphbs({defaultLayout:"main"}));
+app.set("view engine","handlebars");
 // load passport strategies
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');

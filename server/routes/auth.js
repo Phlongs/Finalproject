@@ -11,7 +11,7 @@ var cloudinary = require('cloudinary');
 const router = new express.Router();
 
 
-let email = '';
+let userName = '';
 
 cloudinary.config({ 
   cloud_name: 'ho2ypcaei', 
@@ -29,10 +29,11 @@ function validateSignupForm(payload) {
   const errors = {};
   let isFormValid = true;
   let message = '';
+  console.log("payload/signup",payload);
 
-  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
+  if (!payload || typeof payload.userName !== 'string') {
     isFormValid = false;
-    errors.email = 'Please provide a correct email address.';
+    errors.userName = 'Please provide a correct userName address.';
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 8) {
@@ -64,13 +65,14 @@ function validateSignupForm(payload) {
  *                   errors tips, and a global message for the whole form.
  */
 function validateLoginForm(payload) {
+    console.log("payload/login",payload);
   const errors = {};
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
+  if (!payload || typeof payload.userName !== 'string' || payload.userName.trim().length === 0) {
     isFormValid = false;
-    errors.email = 'Please provide your email address.';
+    errors.userName = 'Please provide your userName address.';
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
@@ -105,13 +107,13 @@ router.post('/signup', (req, res, next) => {
   return passport.authenticate('local-signup', (err) => {
     if (err) {
       if (err.name === 'MongoError' && err.code === 11000) {
-        // the 11000 Mongo code is for a duplication email error
+        // the 11000 Mongo code is for a duplication userName error
         // the 409 HTTP status code is for conflict error
         return res.status(409).json({
           success: false,
           message: 'Check the form for errors.',
           errors: {
-            email: 'This email is already taken.'
+            userName: 'This userName is already taken.'
           }
         });
       }
@@ -131,7 +133,8 @@ router.post('/signup', (req, res, next) => {
 
 router.post('/login', (req, res, next) => {
   const validationResult = validateLoginForm(req.body);
-  email = req.body.email;
+  userName = req.body.userName;
+  console.log("username/login",userName)
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -168,7 +171,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/bio', (req,res,next)=>{
-  User.findOne({ email: email }, (err, user) => {
+  User.findOne({ userName: userName }, (err, user) => {
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.education = req.body.education;
@@ -206,7 +209,7 @@ router.post('/uploads', (req, res) => {
     
       cloudinary.uploader.upload(path, function(result) { 
         console.log('result: ',result.url)
-        User.findOne({ email: email }, (err, user) => {
+        User.findOne({ userName: userName }, (err, user) => {
 
           user.profilePic = result.url; 
 
@@ -220,7 +223,7 @@ router.post('/uploads', (req, res) => {
         });
       });
     } else {
-      User.findOne({ email: email }, (err, user) => {
+      User.findOne({ userName: userName }, (err, user) => {
       user.resume = newPath;
 
       user.save(user, function(err){

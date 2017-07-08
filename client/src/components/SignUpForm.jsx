@@ -30,11 +30,11 @@ const SignUpForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
+          floatingLabelText="userName"
+          name="userName"
+          errorText={errors.userName}
           onChange={onChange}
-          value={user.email}
+          value={user.userName}
         />
       </div>
 

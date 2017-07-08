@@ -24,7 +24,7 @@ class LoginPage extends React.Component {
       errors: {},
       successMessage,
       user: {
-        email: '',
+        userName: '',
         password: ''
       }
     };
@@ -43,9 +43,9 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
+    const userName = encodeURIComponent(this.state.user.userName);
     const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
+    const formData = `userName=${userName}&password=${password}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();

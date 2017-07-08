@@ -31,5 +31,16 @@ router.get('/biopage', (req, res) => {
     });
 
 });
+router.get("/userProfile/:email",(req,res)=>{
+
+	var email = req.params.email;
+	console.log(email)
+
+	User.findOne({userName:email},(err,data)=>{
+		res.render("index",{user:data})
+		
+	});
+
+});
 
 module.exports = router;

@@ -9,6 +9,7 @@ const Dashboard = ({
   secretData,
   onSubmit,
   onChange,
+  user
   }) => (
   <div className="container">
 
@@ -47,6 +48,19 @@ const Dashboard = ({
 
         />
       </div>
+      <div className="field-line">
+        <TextField
+          floatingLabelText="email"
+          name="email"
+
+        />
+      </div>
+
+      <RaisedButton
+         containerElement="label" // <-- Just add me!
+         label="My Profile Pic">
+         <input type="file" name="profilePic" onChange={onChange}/>
+      </RaisedButton>
 
       <div className="field-line">
         <TextField
@@ -58,29 +72,54 @@ const Dashboard = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Experience"
+          floatingLabelText="Current Title"
           name="experience"
+        />
+      </div>
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Please write a short paragraph about yourself and prior work experiences"
+          name="about"
         />
       </div>
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Link to Port 1"
+          floatingLabelText="Name to Project 1"
+          name="port1Name"
+        />
+        <TextField
+          floatingLabelText="Link to Project 1"
           name="port1"
         />
       </div>
 
       <div className="field-line">
         <TextField
+          floatingLabelText="Name to Project 2"
+          name="port2Name"
+        />
+        <TextField
           floatingLabelText="Link to Port 2"
           name="port2"
         />
       </div>
 
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Name to Project 3"
+          name="port3Name"
+        />
+        <TextField
+          floatingLabelText="Link to Port 3"
+          name="port3"
+        />
+      </div>
+
       <RaisedButton
          containerElement="label" // <-- Just add me!
-         label="My Profile Pic">
-         <input type="file" name="profilePic" onChange={onChange}/>
+         label="Your Background Pic">
+         <input type="file" name="backgroundPic" onChange={onChange}/>
       </RaisedButton>
 
       <RaisedButton
@@ -90,10 +129,10 @@ const Dashboard = ({
       </RaisedButton>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Submit" primary />
+        <RaisedButton type="submit" label="Preview Info" primary />
       </div>
 
-      <CardText>Already Submitted Form? <Link to={'/BioPage'}>Preview Website</Link>.</CardText>
+
     </form>
 
   </div>

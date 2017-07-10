@@ -1,22 +1,20 @@
 const express = require('express');
-const validator = require('validator');
 const passport = require('passport');
 const User = require('mongoose').model('User');
 const multiparty = require('multiparty');
 const fs = require('fs');
-const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
 var cloudinary = require('cloudinary');
 
 const router = new express.Router();
 
 
 let userName = '';
+var counter = 0;
 
-cloudinary.config({ 
-  cloud_name: 'ho2ypcaei', 
-  api_key: '197927375455319', 
-  api_secret: 'UH7WxxEA4lzKJ0hFAvJLqKGB3Xg' 
+cloudinary.config({
+  cloud_name: 'ho2ypcaei',
+  api_key: '197927375455319',
+  api_secret: 'UH7WxxEA4lzKJ0hFAvJLqKGB3Xg'
 });
 /**
  * Validate the sign up form
@@ -178,7 +176,13 @@ router.post('/bio', (req,res,next)=>{
     user.phone = req.body.phone;
     user.experience = req.body.experience;
     user.port1 = req.body.port1;
+    user.port1Name = req.body.port1Name;
     user.port2 = req.body.port2;
+    user.port2Name = req.body.port2Name;
+    user.port3 = req.body.port3;
+    user.port3Name = req.body.port3Name;
+    user.email = req.body.email;
+    user.about = req.body.about;
 
     user.save(user, function(err){
       if(err) {
@@ -201,18 +205,25 @@ router.post('/uploads', (req, res) => {
     let newPath = "./uploads/" + originalFilename;
     let newPicPath = '';
     let splitName = originalFilename.toLowerCase().split('.');
+
     console.log(originalFilename)
 
 
-    
+
     if(splitName[1] === 'jpg' || splitName[1] === 'png' || splitName[1] ==='tiff' || splitName[1]==='jpeg' || splitName[1]==='gif') {
-    
-      cloudinary.uploader.upload(path, function(result) { 
+
+      cloudinary.uploader.upload(path, function(result) {
         console.log('result: ',result.url)
         User.findOne({ userName: userName }, (err, user) => {
+          counter++;
+          console.log(counter)
+          if(counter===1){
+          user.profilePic = result.url;
 
-          user.profilePic = result.url; 
-
+        } else if(counter===2){
+          user.backgroundPic = result.url;
+          counter===0;
+        }
           user.save(user, function(err){
         if(err) {
         console.log('ERROR!');

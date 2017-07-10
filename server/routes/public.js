@@ -17,7 +17,7 @@ router.get('/biopage', (req, res) => {
             if(userErr || !user){
                  res.status(401).end();
             }
-            user.email = null;
+            console.log(user.userName)
             user.password = null;
             // user.profilePic = '../../../' + user.profilePic;
             // fs.readFile(user.profilePic, function(err, content){
@@ -31,12 +31,12 @@ router.get('/biopage', (req, res) => {
     });
 
 });
-router.get("/userProfile/:email",(req,res)=>{
+router.get("/userProfile/:username",(req,res)=>{
 
-	var email = req.params.email;
-	console.log(email)
+	var username = req.params.username;
+	console.log(username)
 
-	User.findOne({userName:email},(err,data)=>{
+	User.findOne({userName:username},(err,data)=>{
 		res.render("index",{user:data})
 		
 	});

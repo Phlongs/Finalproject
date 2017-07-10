@@ -51,11 +51,11 @@ class DashboardPage extends React.Component {
         let imageFormData = new FormData();
 
         imageFormData.append('imageFile', imageFile.target.files[0]);
-        
+
         var xhr = new XMLHttpRequest();
-        
+
         xhr.open('post', '/auth/uploads', true);
-        
+
         xhr.onload = function () {
           if (this.status == 200) {
             resolve(this.response);
@@ -63,7 +63,7 @@ class DashboardPage extends React.Component {
             reject(this.statusText);
           }
         };
-        
+
         xhr.send(imageFormData);
 
       });
@@ -80,7 +80,7 @@ class DashboardPage extends React.Component {
         file: file,
       });
     }
-    
+
     reader.readAsDataURL(file);
 
 
@@ -97,10 +97,19 @@ class DashboardPage extends React.Component {
     const lastName = encodeURIComponent(event.target.lastName.value);
     const education = encodeURIComponent(event.target.education.value);
     const phone = encodeURIComponent(event.target.phone.value);
+    const email = encodeURIComponent(event.target.email.value);
+    const about = encodeURIComponent(event.target.about.value);
     const experience = encodeURIComponent(event.target.experience.value);
     const port1 = encodeURIComponent(event.target.port1.value);
+    const port1Name = encodeURIComponent(event.target.port1Name.value);
     const port2 = encodeURIComponent(event.target.port2.value);
-    const formData = `firstName=${firstName}&lastName=${lastName}&education=${education}&phone=${phone}&experience=${experience}&port1=${port1}&port2=${port2}`;
+    const port2Name = encodeURIComponent(event.target.port2Name.value);
+    const port3 = encodeURIComponent(event.target.port3.value);
+    const port3Name = encodeURIComponent(event.target.port3Name.value);
+
+    const formData = `firstName=${firstName}&lastName=${lastName}&education=${education}
+    &phone=${phone}&experience=${experience}&port1=${port1}&port1Name=${port1Name}
+    &port2=${port2}&port2Name=${port2Name}&port3${port3}&port3Name=${port3Name}&email=${email}&about=${about}`;
 
     //create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -130,7 +139,7 @@ class DashboardPage extends React.Component {
         errors.summary = xhr.response.message;
 
         this.setState({
-          
+
         });
       }
     });

@@ -14,9 +14,16 @@ const UserSchema = new mongoose.Schema({
   education: String,
   phone: String,
   experience: String,
+  email: String,
+  about: String,
   port1: String,
+  port1Name: String,
   port2: String,
+  port2Name: String,
+  port3: String,
+  port3Name: String,
   profilePic: String,
+  backgroundPic: String,
   resume: String
 });
 

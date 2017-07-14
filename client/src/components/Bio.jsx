@@ -7,7 +7,7 @@ const Bio = ({ user }) =>(
     <div className = "container">
 
     <h2>Profile Pic:</h2>
-    <img src={user.profilePic}/>
+    <img style={{ width: 200, height: 200 }} src={user.profilePic}/>
 
     <h2>First Name: {user.firstName} Last Name: {user.lastName}</h2>
 

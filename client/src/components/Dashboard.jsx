@@ -170,7 +170,7 @@ const Dashboard = ({
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
         /><span>  </span>
         <TextField
-          floatingLabelText="Link to Port 2"
+          floatingLabelText="Link to Project 2"
           name="port2"
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
@@ -191,7 +191,7 @@ const Dashboard = ({
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
         /><span>  </span>
         <TextField
-          floatingLabelText="Link to Port 3"
+          floatingLabelText="Link to Project 3"
           name="port3"
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}

@@ -30,7 +30,7 @@ const Bio = ({ user }) =>(
     <text>Email: {user.email}</text>
 
     <h2>Background Image: </h2>
-    <img src={user.backgroundPic}/>
+    <img style={{ width: 200, height: 200 }} src={user.backgroundPic} />
 
 	<CardText>If all of your info is correct <a href={'/public/userProfile/'+user.userName}>Check out your Website!!</a>.</CardText>
     </div>

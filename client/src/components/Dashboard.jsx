@@ -56,14 +56,14 @@ const Dashboard = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="First Name "
+          floatingLabelText="First Name"
           name="firstName"
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
           floatingLabelStyle={inputStyle.floatingLabelStyle}
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
-        />
+        /><span>  </span>
 
         <TextField
           floatingLabelText="Last Name"
@@ -73,7 +73,7 @@ const Dashboard = ({
           underlineFocusStyle={inputStyle.underlineStyle}
           floatingLabelStyle={inputStyle.floatingLabelStyle}
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
-        />
+        /><span>  </span>
 
         <TextField
           floatingLabelText="Phone Number"
@@ -94,7 +94,7 @@ const Dashboard = ({
           underlineFocusStyle={inputStyle.underlineStyle}
           floatingLabelStyle={inputStyle.floatingLabelStyle}
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
-        />
+        /><span>  </span>
 
 
       <RaisedButton
@@ -113,7 +113,7 @@ const Dashboard = ({
           underlineFocusStyle={inputStyle.underlineStyle}
           floatingLabelStyle={inputStyle.floatingLabelStyle}
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
-        />
+        /><span>  </span>
 
         <TextField
           floatingLabelText="Current Title"
@@ -148,7 +148,7 @@ const Dashboard = ({
           underlineFocusStyle={inputStyle.underlineStyle}
           floatingLabelStyle={inputStyle.floatingLabelStyle}
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
-        />
+        /><span>  </span>
         <TextField
           floatingLabelText="Link to Project 1"
           name="port1"
@@ -169,7 +169,7 @@ const Dashboard = ({
           underlineFocusStyle={inputStyle.underlineStyle}
           floatingLabelStyle={inputStyle.floatingLabelStyle}
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
-        />
+        /><span>  </span>
         <TextField
           floatingLabelText="Link to Port 2"
           name="port2"
@@ -190,7 +190,7 @@ const Dashboard = ({
           underlineFocusStyle={inputStyle.underlineStyle}
           floatingLabelStyle={inputStyle.floatingLabelStyle}
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
-        />
+        /><span>  </span>
         <TextField
           floatingLabelText="Link to Port 3"
           name="port3"

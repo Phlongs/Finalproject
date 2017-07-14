@@ -43,9 +43,11 @@
     "react-dom": "^15.4.1",
     "react-lazyload": "^2.2.7",
     "react-router": "^3.0.0",
+    "react-slick": "^0.14.11",
     "react-tap-event-plugin": "^2.0.1",
     "scrollreveal": "^3.1.4",
-    "webpack": "^1.15.0"
+    "webpack": "^1.15.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",

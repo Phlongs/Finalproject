@@ -217,13 +217,15 @@ router.post('/uploads', (req, res) => {
 
         User.findOne({ userName: userName }, (err, user) => {
           counter++;
-
+          console.log('1st pass: ',counter)
           if(counter===1){
           user.profilePic = result.url;
-
+          console.log('after profilePic: ', counter)
         } else if(counter===2){
+          console.log('2nd pass: ', counter)
           user.backgroundPic = result.url;
-          counter===0;
+          counter=0;
+          console.log('after backgroundPic: ', counter)
         }
           user.save(user, function(err){
         if(err) {

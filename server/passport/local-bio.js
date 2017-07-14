@@ -25,10 +25,5 @@ module.exports = new PassportLocalStrategy({
       };
 
   return done(null, token, data);
-  // const newUser = new User(userData);
-  // newUser.save((err) => {
-  //   if (err) { return done(err); }
 
-  //   return done(null);
-  // });
 });

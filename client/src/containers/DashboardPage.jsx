@@ -3,10 +3,7 @@ import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
 var FormData = require('form-data');
 
-
-
 class DashboardPage extends React.Component {
-
 
   /**
    * Class constructor.
@@ -69,16 +66,6 @@ class DashboardPage extends React.Component {
       });
     }
 
-    uploadRes(event) {
-
-      event.preventDefault();
-      const file = event.target.files[0];
-        console.log(file)
-      getSignedRequest(file);
-    }
-
-
-
     handleImageChange(e) {
     e.preventDefault();
 
@@ -97,8 +84,6 @@ class DashboardPage extends React.Component {
   }
 
   processForm(event) {
-
-
     //prevent default action. in this case, action is the form submission event
     event.preventDefault();
 
@@ -167,7 +152,6 @@ class DashboardPage extends React.Component {
         secretData={this.state.secretData}
         onSubmit={this.processForm}
         onChange={this.uploadImage}
-        uploadRes={this.uploadRes}
       />
     );
   }
@@ -178,38 +162,4 @@ DashboardPage.contextTypes = {
   router: PropTypes.object.isRequired
 };
 
-    function getSignedRequest(file) {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', `auth/sign-s3?file-name=${file.name}&file-type=${file.type}`);
-      xhr.onreadystatechange = () => {
-      if(xhr.readyState === 4){
-      if(xhr.status === 200){
-        const response = JSON.parse(xhr.responseText);
-        uploadFile(file, response.signedRequest, response.url);
-      }
-      else{
-        alert('Could not get signed URL.');
-      }
-    }
-    };
-    xhr.send();
-    }
-
-    function uploadFile(file, signedRequest, url){
-    const xhr = new XMLHttpRequest();
-    xhr.open('PUT', signedRequest);
-    xhr.onreadystatechange = () => {
-    if(xhr.readyState === 4){
-      if(xhr.status === 200){
-        document.getElementById('preview').src = url;
-        document.getElementById('avatar-url').value = url;
-      }
-      else{
-        alert('Could not upload file.');
-      }
-    }
-    };
-    xhr.send(file);
-    }   
-  
 export default DashboardPage;

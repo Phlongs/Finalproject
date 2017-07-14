@@ -41,7 +41,6 @@ const Dashboard = ({
   secretData,
   onSubmit,
   onChange,
-  uploadRes,
   user
   }) => (
   <Card style ={cardStyle} className="container">

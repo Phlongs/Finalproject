@@ -87,6 +87,11 @@ const SignUpForm = ({
           onChange={onChange}
           errorText={errors.password}
           value={user.password}
+          underlineStyle={inputStyle.underlineStyle}
+          floatingLabelStyle={inputStyle.floatingLabelStyle}
+          underlineFocusStyle={inputStyle.underlineStyle}
+          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
+          errorStyle={inputStyle.errorStyle}
         />
       </div>
 

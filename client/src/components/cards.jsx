@@ -30,7 +30,7 @@ const Cards = () => (
     <CardMedia >
 <i className="fa fa-paint-brush fa-3x" aria-hidden="true"></i>
     </CardMedia>
-    <CardTitle title="Dynamic" subtitle="Card subtitle" />
+    <CardTitle title="Dynamic" subtitle="Free to update" />
     <CardText>
           You can make as many updates to your page that you'd like.
 

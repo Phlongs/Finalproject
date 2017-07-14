@@ -3,22 +3,18 @@ const passport = require('passport');
 const User = require('mongoose').model('User');
 const multiparty = require('multiparty');
 const fs = require('fs');
-const aws = require('aws-sdk');
 var cloudinary = require('cloudinary');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 const router = new express.Router();
-const S3_BUCKET = 'biobuild';
-
-aws.config.loadFromPath('config/keys.json');
 
 let userName = '';
 var counter = 0;
 
 cloudinary.config({
-  cloud_name: 'ho2ypcaei',
-  api_key: '197927375455319',
-  api_secret: 'UH7WxxEA4lzKJ0hFAvJLqKGB3Xg'
+  cloud_name: 'hbr7tpsgi',
+  api_key: '648238336776575',
+  api_secret: 'a2Jx3iHYcAsu8QQY5InNx9EX1CQ'
 });
 /**
  * Validate the sign up form
@@ -31,7 +27,7 @@ function validateSignupForm(payload) {
   const errors = {};
   let isFormValid = true;
   let message = '';
-  console.log("payload/signup",payload);
+
 
   if (!payload || typeof payload.userName !== 'string') {
     isFormValid = false;
@@ -66,26 +62,10 @@ function validateSignupForm(payload) {
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
-       function uploadFile(file, signedRequest, url) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('PUT', signedRequest);
-        xhr.onreadystatechange = (err) => {
-        if(xhr.readyState === 4){
-          if(xhr.status === 200){
-              console.log('file uploaded to s3')
-          }
-          else{
-            console.log('Could not upload file.', err);
-          }
-        }
-      };
-
-      xhr.send(file);
-      }
 
 
 function validateLoginForm(payload) {
-    console.log("payload/login",payload);
+
   const errors = {};
   let isFormValid = true;
   let message = '';
@@ -154,7 +134,7 @@ router.post('/signup', (req, res, next) => {
 router.post('/login', (req, res, next) => {
   const validationResult = validateLoginForm(req.body);
   userName = req.body.userName;
-  console.log("username/login",userName)
+
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -165,7 +145,7 @@ router.post('/login', (req, res, next) => {
 
 
   return passport.authenticate('local-login', (err, token, userData) => {
-    console.log('userData after auth: ',userData)
+
     if (err) {
       if (err.name === 'IncorrectCredentialsError') {
         return res.status(400).json({
@@ -216,66 +196,28 @@ router.post('/bio', (req,res,next)=>{
   });
 });
 
-router.get('/sign-s3', (req, res) => {
-  const s3 = new aws.S3();
-  const fileName = req.query['file-name'];
-  const fileType = req.query['file-type'];
-  console.log('fileName: ', fileName)
-  const s3Params = {
-    Bucket: S3_BUCKET,
-    Key: fileName,
-    Expires: 60,
-    ContentType: fileType,
-    ACL: 'public-read'
-  };
-
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
-    if(err){
-      console.log(err);
-      return res.end();
-    }
-    console.log(data)
-    const returnData = {
-      signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-    };
-    res.write(JSON.stringify(returnData));
-    res.end();
-  });
-});
-
 router.post('/uploads', (req, res) => {
 
   let form = new multiparty.Form();
-  const s3 = new aws.S3();
+
 
   form.parse(req, (err, fields, files) => {
-    console.log(files.imageFile[0])
+
     let {path: tempPath, originalFilename} = files.imageFile[0];
     let picPath = files.imageFile[0].path;
     let fileName = files.imageFile[0].originalFilename;
     let fileType = files.imageFile[0].fieldName;
-    // const s3Params = {
-    //   Bucket: S3_BUCKET,
-    //   Key: fileName,
-    //   Expires: 60,
-    //   ContentType: fileType,
-    //   ACL: 'public-read'
-    // }
+
     let newPath = "./uploads/" + originalFilename;
     let splitName = fileName.toLowerCase().split('.');
-
-    console.log(fileName)
-
-
 
     if(splitName[1] === 'jpg' || splitName[1] === 'png' || splitName[1] ==='tiff' || splitName[1]==='jpeg' || splitName[1]==='gif') {
 
       cloudinary.uploader.upload(picPath, function(result) {
-        console.log('result: ',result.url)
+
         User.findOne({ userName: userName }, (err, user) => {
           counter++;
-          console.log(counter)
+
           if(counter===1){
           user.profilePic = result.url;
 
@@ -293,42 +235,7 @@ router.post('/uploads', (req, res) => {
         });
       });
     } 
-  //   else {
 
-
-  //     s3.getSignedUrl('putObject', s3Params, (err, data) => {
-  //     if(err){
-  //     console.log(err);
-  //     return res.end();
-  //   }
-  //     const returnData = {
-  //     signedRequest: data,
-  //     url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-  //   };
-
-  //     uploadFile(path, returnData.signedRequest, returnData.url);
-  //     console.log('data from s3: ',data)
-  //   //   fs.readFile(tempPath, (err,data) => {
-  //   //     fs.writeFile(newPath, data, (err) => {
-  //   //       fs.unlink(tempPath, () => {
-  //   //         res.send("File uploaded to: " + newPath);
-  //   //       });
-  //   //     });
-  //   //   });
-
-  //   //   User.findOne({ userName: userName }, (err, user) => {
-  //   //   user.resume = newPath;
-
-  //   //   user.save(user, function(err){
-  //   //     if(err) {
-  //   //       console.log('ERROR!');
-  //   //     } else {
-  //   //       console.log('saved');
-  //   //     }
-  //   //   });
-  //   // });
-  // })
-  // }
   })
 });
 

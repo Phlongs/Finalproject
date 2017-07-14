@@ -39,10 +39,11 @@ const SimpleSlider = React.createClass({
     
         <div>
         <div id="slide-1" className="slide-style slide-text">
-          <ul className="slide-text">
-            <li id="slide-header">Save Time. Be noticed.</li>
-            <li id="slide-subheader">Create your resume and a professional web presence at the same time.</li>
-          </ul>
+
+            <h1>BioBuild</h1>
+            <h3>Save Time. Be Noticed.</h3>
+            <h6>Create your professional web presence in minutes!</h6>
+
         </div>
         </div>
          { /*<div>

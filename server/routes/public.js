@@ -17,7 +17,7 @@ router.get('/biopage', (req, res) => {
             if(userErr || !user){
                  res.status(401).end();
             }
-            console.log(user.userName)
+
             user.password = null;
             // user.profilePic = '../../../' + user.profilePic;
             // fs.readFile(user.profilePic, function(err, content){
@@ -34,7 +34,6 @@ router.get('/biopage', (req, res) => {
 router.get("/userProfile/:username",(req,res)=>{
 
 	var username = req.params.username;
-	console.log(username)
 
 	User.findOne({userName:username},(err,data)=>{
 		res.render("index",{user:data})

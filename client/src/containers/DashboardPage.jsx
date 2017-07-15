@@ -52,7 +52,7 @@ class DashboardPage extends React.Component {
         var xhr = new XMLHttpRequest();
 
         xhr.open('post', '/auth/uploads', true);
-
+        xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
         xhr.onload = function () {
           if (this.status == 200) {
             resolve(this.response);

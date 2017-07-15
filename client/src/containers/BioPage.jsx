@@ -24,7 +24,7 @@ class BioPage extends React.Component {
                 this.setState({
                     userInfo: xhr.response
                 });
-                console.log(user.email)
+                
             }
            console.log(userInfo)
         });

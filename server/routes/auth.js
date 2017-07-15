@@ -1,6 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 const User = require('mongoose').model('User');
+const jwt = require('jsonwebtoken');
+const config = require('../../config');
 const multiparty = require('multiparty');
 const fs = require('fs');
 var cloudinary = require('cloudinary');
@@ -171,7 +173,16 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/bio', (req,res,next)=>{
-  User.findOne({ userName: userName }, (err, user) => {
+  const token = req.headers.authorization.split(' ')[1];
+    
+  jwt.verify(token,config.jwtSecret,(err,decoded) => {
+    if(err){ res.status(401).end();}
+    const userId = decoded.sub;
+    User.findById(userId,(userErr,user) => {
+        if(userErr || !user){
+          res.status(401).end();
+        }
+
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.education = req.body.education;
@@ -195,12 +206,16 @@ router.post('/bio', (req,res,next)=>{
     });
   });
 });
+});
 
 router.post('/uploads', (req, res) => {
 
   let form = new multiparty.Form();
+  const token = req.headers.authorization.split(' ')[1];
 
-
+  jwt.verify(token,config.jwtSecret,(err,decoded) => {
+    if(err){ res.status(401).end();}
+    const userId = decoded.sub;
   form.parse(req, (err, fields, files) => {
 
     let {path: tempPath, originalFilename} = files.imageFile[0];
@@ -215,7 +230,10 @@ router.post('/uploads', (req, res) => {
 
       cloudinary.uploader.upload(picPath, function(result) {
 
-        User.findOne({ userName: userName }, (err, user) => {
+        User.findById(userId,(userErr,user) => {
+            if(userErr || !user){
+                 res.status(401).end();
+            }
           counter++;
           console.log('1st pass: ',counter)
           if(counter===1){
@@ -239,6 +257,7 @@ router.post('/uploads', (req, res) => {
     } 
 
   })
+});
 });
 
 module.exports = router;

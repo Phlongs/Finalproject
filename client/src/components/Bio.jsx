@@ -5,7 +5,7 @@ import { Card, CardTitle, CardText } from 'material-ui/Card';
 const Bio = ({ user }) =>(
 
     <div className = "container">
-
+    <div className = "bio">
     <h2>Profile Pic:</h2>
     <img style={{ width: 200, height: 200 }} src={user.profilePic}/>
 
@@ -33,6 +33,7 @@ const Bio = ({ user }) =>(
     <img style={{ width: 200, height: 200 }} src={user.backgroundPic} />
 
 	<CardText>If all of your info is correct <a href={'/public/userProfile/'+user.userName}>Check out your Website!!</a>.</CardText>
+    </div>
     </div>
 
 );

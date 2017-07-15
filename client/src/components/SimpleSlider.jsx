@@ -44,9 +44,10 @@ const SimpleSlider = React.createClass({
           <ul className="slide-text">
             <li id="slide-header">BioBuild</li>
             <li id="slide-header">Save Time. Be noticed.</li>
-            <li id="slide-subheader">Create your resume and a professional web presence at the same time.</li>
+            <li id="slide-subheader">Create your professional web presence in minutes!</li>
           </ul>
-          
+            {"\n"}
+            {"\n"}
         <div id="card-set">
         <Card id="card-1" className="landing-page-cards">
           <CardMedia >

@@ -217,47 +217,62 @@ router.post('/uploads', (req, res) => {
     if(err){ res.status(401).end();}
     const userId = decoded.sub;
   form.parse(req, (err, fields, files) => {
-
-    let {path: tempPath, originalFilename} = files.imageFile[0];
-    let picPath = files.imageFile[0].path;
-    let fileName = files.imageFile[0].originalFilename;
-    let fileType = files.imageFile[0].fieldName;
-
-    let newPath = "./uploads/" + originalFilename;
-    let splitName = fileName.toLowerCase().split('.');
+    let fileType = Object.getOwnPropertyNames(files);
+    
+     if(fileType[0] === 'profilePic') {
+     let {path: tempPath, originalFilename} = files.profilePic[0];
+     let profilePicPath = files.profilePic[0].path;
+     let splitName = originalFilename.toLowerCase().split('.');
 
     if(splitName[1] === 'jpg' || splitName[1] === 'png' || splitName[1] ==='tiff' || splitName[1]==='jpeg' || splitName[1]==='gif') {
+      cloudinary.uploader.upload(profilePicPath, function(result) {
 
-      cloudinary.uploader.upload(picPath, function(result) {
+         User.findById(userId,(userErr,user) => {
+             if(userErr || !user){
+                  res.status(401).end();
+             }
 
-        User.findById(userId,(userErr,user) => {
-            if(userErr || !user){
-                 res.status(401).end();
-            }
-          counter++;
-          console.log('1st pass: ',counter)
-          if(counter===1){
-          user.profilePic = result.url;
-          console.log('after profilePic: ', counter)
-        } else if(counter===2){
-          console.log('2nd pass: ', counter)
-          user.backgroundPic = result.url;
-          counter=0;
-          console.log('after backgroundPic: ', counter)
-        }
-          user.save(user, function(err){
-        if(err) {
-        console.log('ERROR!');
-        } else {
-        console.log('saved');
-        }
-        });
+           user.profilePic = result.url;
+
+           user.save(user, function(err){
+           if(err) {
+           console.log('ERROR!');
+           } else {
+           console.log('saved');
+           }
+           });
         });
       });
-    } 
+    };
+    } else if(fileType[0] === 'backgroundPic') {
+     let {path: tempPath, originalFilename} = files.backgroundPic[0];
+     let backgroundPicPath = files.backgroundPic[0].path;
+     let splitName = originalFilename.toLowerCase().split('.');
 
-  })
+    if(splitName[1] === 'jpg' || splitName[1] === 'png' || splitName[1] ==='tiff' || splitName[1]==='jpeg' || splitName[1]==='gif') {
+      cloudinary.uploader.upload(backgroundPicPath, function(result) {
+
+         User.findById(userId,(userErr,user) => {
+             if(userErr || !user){
+                  res.status(401).end();
+             }
+
+           user.backgroundPic = result.url;
+
+           user.save(user, function(err){
+           if(err) {
+           console.log('ERROR!');
+           } else {
+           console.log('saved');
+           }
+           });
+        });
+      });
+    };
+    }
+  });
 });
 });
+
 
 module.exports = router;

@@ -46,8 +46,9 @@ class DashboardPage extends React.Component {
     uploadImage(imageFile) {
       return new Promise((resolve, reject) => {
         let imageFormData = new FormData();
-
-        imageFormData.append('imageFile', imageFile.target.files[0]);
+        let fileType = imageFile.target.name;
+        
+        imageFormData.append(fileType, imageFile.target.files[0]);
 
         var xhr = new XMLHttpRequest();
 

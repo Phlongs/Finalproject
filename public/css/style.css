@@ -30,6 +30,10 @@ h1{
   color: #fff;
 }
 
+.red {
+  color: red;
+}
+
 #slide-header{
   font-size: 70px;
   list-style: none;

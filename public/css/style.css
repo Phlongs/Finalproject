@@ -1,11 +1,16 @@
+html{
+     max-width: 100%;
+    overflow-x: hidden;
+}
 body {
   margin: 0;
   font-size: 16px;
   height: 100%;
-  background-image: url("/img/StockSnap_GKEM7CVCV1.jpg");
+  background-image: url("/img/overlay.jpg");
   background-size: 105%;
   background-repeat: no-repeat;
   background-color: #182734;
+
 }
 
 a {
@@ -49,8 +54,7 @@ h1{
   padding-top: 50px;
 }
 #slide-1 {
-      background: rgba(24, 39, 52,.7);
-      width: 105%;  
+  width: 105%;  
 }
 
 .text-center {
@@ -86,6 +90,7 @@ h1{
   margin: 0 8px;
   font-family: 'Cormorant Garamond', serif; 
   font-size: 150%;
+
 }
 
 .container {
@@ -114,5 +119,36 @@ h1{
 
 .success-message {
   padding: 0 16px;
+  color: green;
+}
+
+#card-set {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 120px 50px 120px;
+      background-color: #182734;
+color: green;
+}
+
+.landing-page-cards { 
+  margin: 15px;
+  display: inline-block;
+  width: 330px;
+  padding: 8px;
+
+
+}
+
+/*login */
+.button-line {
+  border-style: solid;
+  border-width: 2px;
+  color: #fff;
+  border-color: #fff;
+  background-color: #fff;
+}
+
+.login-link{
   color: green;
 }

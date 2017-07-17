@@ -131,8 +131,7 @@ h1{
   display: flex;
   justify-content: space-between;
   padding: 50px 120px 50px 120px;
-      background-color: #182734;
-color: green;
+      background-color: transparent;
 }
 
 .landing-page-cards { 

@@ -2,7 +2,21 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
+const cardStyle = {
+  height: "90%",
+  paddingTop: "20px",
+  width: "60%",
+  backgroundColor: "#fff"
+}
+
 const Bio = ({ user }) =>(
+
+  <Card style ={cardStyle} className="container">
+
+    <CardTitle
+      title="Preview Info"
+      subtitle="Please make sure info is correct below:"
+    />
 
     <div className = "container">
     <div className = "bio">
@@ -21,9 +35,9 @@ const Bio = ({ user }) =>(
     {user.experience}
 
     <h2>Portfolio: </h2>
-    <a href={user.port1}>{user.port1Name}</a>
-    <a href={user.port2}>{user.port2Name}</a>
-    <a href={user.port3}>{user.port3Name}</a>
+    <a href={user.port1} className="red">{user.port1Name}</a>
+    <a href={user.port2} className="red">{user.port2Name}</a>
+    <a href={user.port3} className="red">{user.port3Name}</a>
 
     <h2>Contact info: </h2>
     <text>Phone: {user.phone}</text>
@@ -32,9 +46,10 @@ const Bio = ({ user }) =>(
     <h2>Background Image: </h2>
     <img style={{ width: 200, height: 200 }} src={user.backgroundPic} />
 
-	<CardText>If all of your info is correct <a href={'/public/userProfile/'+user.userName}  target="_blank">Check out your Website!!</a>.</CardText>
+	<CardText>If all of your info is correct <a href={'/public/userProfile/'+user.userName}  target="_blank" className="red">Check out your Website!!</a>.</CardText>
     </div>
     </div>
+    </Card>
 
 );
 

@@ -182,6 +182,18 @@ router.post('/bio', (req,res,next)=>{
         if(userErr || !user){
           res.status(401).end();
         }
+    var arr = [];
+    var numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+    
+    function shuffle(o) {
+    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    var rand = o.pop();
+    return rand;
+    };
+
+    for(var i = 1; i<4; i++){
+      arr[i] = shuffle(numbers);
+    }
 
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
@@ -196,6 +208,10 @@ router.post('/bio', (req,res,next)=>{
     user.port3Name = req.body.port3Name;
     user.email = req.body.email;
     user.about = req.body.about;
+    user.resume = req.body.resume;
+    user.port1Pic = "../../img/portfolio/thumbnails/" + arr[1] + ".jpg";
+    user.port2Pic = "../../img/portfolio/thumbnails/" + arr[2] + ".jpg";
+    user.port3Pic = "../../img/portfolio/thumbnails/" + arr[3] + ".jpg";
 
     user.save(user, function(err){
       if(err) {
@@ -244,7 +260,9 @@ router.post('/uploads', (req, res) => {
         });
       });
     };
-    } else if(fileType[0] === 'backgroundPic') {
+    } 
+
+    else if(fileType[0] === 'backgroundPic') {
      let {path: tempPath, originalFilename} = files.backgroundPic[0];
      let backgroundPicPath = files.backgroundPic[0].path;
      let splitName = originalFilename.toLowerCase().split('.');
@@ -270,7 +288,8 @@ router.post('/uploads', (req, res) => {
       });
     };
     }
-  });
+      
+});
 });
 });
 

@@ -14,21 +14,6 @@ class DashboardPage extends React.Component {
     this.state = {
       errors: {},
       secretData: '',
-      userUpdate: {
-        firstName: '',
-        lastName: '',
-        phone: '',
-        email: '',
-        education: '',
-        experience: '',
-        about: '',
-        port1Name: '',
-        port1: '',
-        port2Name: '',
-        port2: '',
-        port3Name: '',
-        port3: ''
-      },
       userInfo: {},
       file: {}
     };
@@ -92,6 +77,7 @@ class DashboardPage extends React.Component {
     const phone = encodeURIComponent(event.target.phone.value);
     const email = encodeURIComponent(event.target.email.value);
     const about = encodeURIComponent(event.target.about.value);
+    const resume = encodeURIComponent(event.target.resume.value);
     const experience = encodeURIComponent(event.target.experience.value);
     const port1 = encodeURIComponent(event.target.port1.value);
     const port1Name = encodeURIComponent(event.target.port1Name.value);
@@ -102,7 +88,7 @@ class DashboardPage extends React.Component {
 
     const formData = `firstName=${firstName}&lastName=${lastName}&education=${education}
     &phone=${phone}&experience=${experience}&port1=${port1}&port1Name=${port1Name}
-    &port2=${port2}&port2Name=${port2Name}&port3=${port3}&port3Name=${port3Name}&email=${email}&about=${about}`;
+    &port2=${port2}&port2Name=${port2Name}&port3=${port3}&port3Name=${port3Name}&email=${email}&about=${about}&resume=${resume}`;
 
     //create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -132,17 +118,6 @@ class DashboardPage extends React.Component {
     this.context.router.replace('/BioPage');
   }
 
-    changeUser(event) {
-      console.log('changeUser')
-    const field = event.target.name;
-    const userUpdate = this.state.userInfo;
-    console.log('userUpdate:',userUpdate)
-    userUpdate[field] = event.target.value;
-
-    this.setState({
-      userUpdate
-    });
-  }
   /**
    * Render the component.
    */

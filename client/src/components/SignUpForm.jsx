@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Card, CardText } from 'material-ui/Card';
 import Button from './Button.jsx';
 import TextField from 'material-ui/TextField';
-import {orange500, blueGrey900} from 'material-ui/styles/colors';
+import {orange500, grey400, indigo900, bluegrey500} from 'material-ui/styles/colors';
 
 const cardStyle = {
   height: "700px",
@@ -20,18 +20,18 @@ const test = {
   color: "green"
 }
 
-const inputStyle = {
+const styles = {
   errorStyle: {
-    color: "orange500",
+    color: orange500,
   },
   underlineStyle: {
-    borderColor: "blueGrey900",
+    borderColor: grey400,
   },
   floatingLabelStyle: {
-    color: "blueGrey900",
+    color: indigo900,
   },
   floatingLabelFocusStyle: {
-    color: "blueGrey900",
+    color: bluegrey500,
   },
 };
 
@@ -56,11 +56,10 @@ const SignUpForm = ({
           errorText={errors.name}
           onChange={onChange}
           value={user.name}
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
+          errorStyle={styles.errorStyle}
+          underlineStyle={styles.underlineStyle}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
       </div>
 
@@ -71,11 +70,9 @@ const SignUpForm = ({
           errorText={errors.userName}
           onChange={onChange}
           value={user.userName}
-          underlineStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
-          errorStyle={inputStyle.errorStyle}
+          errorStyle={styles.errorStyle}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
       </div>
 
@@ -87,11 +84,9 @@ const SignUpForm = ({
           onChange={onChange}
           errorText={errors.password}
           value={user.password}
-          underlineStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
-          errorStyle={inputStyle.errorStyle}
+          errorStyle={styles.errorStyle}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
       </div>
 

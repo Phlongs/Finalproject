@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import {orange500, blueGrey900} from 'material-ui/styles/colors';
+import {orange500, grey400, indigo900, bluegrey500} from 'material-ui/styles/colors';
 
 const cardStyle = {
   height: "90%",
@@ -20,21 +20,21 @@ const test = {
   color: "green"
 }
 
-const inputStyle = {
+
+const styles = {
   errorStyle: {
-    color: "orange500",
+    color: orange500,
   },
   underlineStyle: {
-    borderColor: "blueGrey900",
+    borderColor: grey400,
   },
   floatingLabelStyle: {
-    color: "blueGrey900",
+    color: indigo900,
   },
   floatingLabelFocusStyle: {
-    color: "blueGrey900",
+    color: bluegrey500,
   },
 };
-
 
 
 const Dashboard = ({
@@ -58,43 +58,33 @@ const Dashboard = ({
         <TextField
           floatingLabelText="First Name"
           name="firstName"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         /><span>  </span>
 
         <TextField
           floatingLabelText="Last Name"
           name="lastName"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         /><span>  </span>
 
         <TextField
           floatingLabelText="Phone Number"
           name="phone"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
-        />
-      </div>
-      <div className="field-line">
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+        /><span>  </span>
+
         <TextField
           floatingLabelText="Email"
           name="email"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
-        /><span>  </span>
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+        />
+      </div>
+      <div className="field-line">
+
 
       <RaisedButton
          containerElement="label" // <-- Just add me!
@@ -107,21 +97,15 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Education"
           name="education"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         /><span>  </span>
 
         <TextField
           floatingLabelText="Current Title"
           name="experience"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}          
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}          
         />
       </div>
 
@@ -130,11 +114,18 @@ const Dashboard = ({
           floatingLabelText="Please write a short paragraph about yourself and prior work experiences"
           name="about"
           style = {{width: 600}}
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}          
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}          
+        />
+      </div>
+
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Resume (requires link to your resume at google docs with public access)"
+          name="resume"
+          style = {{width: 600}}
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}          
         />
       </div>
 
@@ -142,20 +133,14 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Name to Project 1"
           name="port1Name"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
         /><span>  </span>
         <TextField
           floatingLabelText="Link to Project 1"
           name="port1"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
         />
       </div>
 
@@ -163,20 +148,14 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Name to Project 2"
           name="port2Name"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
         /><span>  </span>
         <TextField
           floatingLabelText="Link to Project 2"
           name="port2"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
         />
       </div>
 
@@ -184,22 +163,16 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Name to Project 3"
           name="port3Name"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
         /><span>  </span>
         <TextField
           floatingLabelText="Link to Project 3"
           name="port3"
-          errorStyle={inputStyle.errorStyle}
-          underlineStyle={inputStyle.underlineStyle}
-          underlineFocusStyle={inputStyle.underlineStyle}
-          floatingLabelStyle={inputStyle.floatingLabelStyle}
-          floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle} 
+          floatingLabelStyle={styles.floatingLabelStyle}
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
         />
-      </div>
+        </div>
 
       <RaisedButton
          containerElement="label" // <-- Just add me!
@@ -208,7 +181,7 @@ const Dashboard = ({
       </RaisedButton>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Preview Info" primary />
+        <RaisedButton className="red" type="submit" label="Preview Info" primary />
       </div>
     </form>
 

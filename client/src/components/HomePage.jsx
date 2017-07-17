@@ -10,6 +10,7 @@ import Footer from './Footer.jsx';
 const HomePage = () => (
   <div>
   <SimpleSlider />
+  <Cards />
   </div>
   );
 

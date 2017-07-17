@@ -10,7 +10,7 @@ var SimpleSlider = React.createClass({
           <ul className="slide-text">
             <li id="slide-header">BioBuild <br />
               Save time. Be noticed.</li>
-            <li id="slide-subheader">Create your resume and a professional web presence at the same time.</li>
+            <li id="slide-subheader">Create a professional web presence in just minutes!</li>
           </ul>
         </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Bio from '../components/Bio.jsx';
-import Auth from '../modules/Auth'
+import Auth from '../modules/Auth';
 
 class BioPage extends React.Component {
     constructor(props,context){

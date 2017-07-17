@@ -41,6 +41,7 @@ const Dashboard = ({
   secretData,
   onSubmit,
   onChange,
+  userUpdate,
   user
   }) => (
   <Card style ={cardStyle} className="container">
@@ -49,7 +50,7 @@ const Dashboard = ({
       title="You're on your way to creating your very own website"
       subtitle="Please fill out form below:"
     />
-    {secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>{secretData}</CardText>}
+    
 
     <form formMethod="post" onSubmit={onSubmit} >
 
@@ -57,6 +58,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="First Name"
           name="firstName"
+          value={user.firstName}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -67,6 +70,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Last Name"
           name="lastName"
+          value={user.lastName}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -77,6 +82,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Phone Number"
           name="phone"
+          value={user.phone}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -88,13 +95,14 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Email"
           name="email"
+          value={user.email}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
           floatingLabelStyle={inputStyle.floatingLabelStyle}
           floatingLabelFocusStyle={inputStyle.floatingLabelFocusStyle}
         /><span>  </span>
-
 
       <RaisedButton
          containerElement="label" // <-- Just add me!
@@ -107,6 +115,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Education"
           name="education"
+          value={user.education}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -117,6 +127,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Current Title"
           name="experience"
+          value={user.experience}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -129,6 +141,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Please write a short paragraph about yourself and prior work experiences"
           name="about"
+          value={user.about}
+          onChange={userUpdate}
           style = {{width: 600}}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
@@ -142,6 +156,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Name to Project 1"
           name="port1Name"
+          value={user.port1Name}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -151,6 +167,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Link to Project 1"
           name="port1"
+          value={user.port1}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -163,6 +181,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Name to Project 2"
           name="port2Name"
+          value={user.port2Name}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -172,6 +192,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Link to Project 2"
           name="port2"
+          value={user.port2}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -184,6 +206,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Name to Project 3"
           name="port3Name"
+          value={user.port3Name}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}
@@ -193,6 +217,8 @@ const Dashboard = ({
         <TextField
           floatingLabelText="Link to Project 3"
           name="port3"
+          value={user.port3}
+          onChange={userUpdate}
           errorStyle={inputStyle.errorStyle}
           underlineStyle={inputStyle.underlineStyle}
           underlineFocusStyle={inputStyle.underlineStyle}

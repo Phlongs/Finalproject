@@ -7,7 +7,7 @@ const fs = require("fs");
 
 
 router.get('/biopage', (req, res) => {
-
+    console.log('biopage')
     const token = req.headers.authorization.split(' ')[1];
     
     jwt.verify(token,config.jwtSecret,(err,decoded) => {

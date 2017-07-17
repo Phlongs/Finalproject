@@ -5,11 +5,11 @@ var style = {
     backgroundColor: "#d1d1d1",
     borderTop: "1px solid #E7E7E7",
     textAlign: "center",
-    padding: "20px",
+    padding: "10px",
     position: "fixed",
     left: "0",
     bottom: "0",
-    height: "50px",
+    height: "40px",
     width: "100%",
     zIndex: "99",
       backgroundColor: "#fff",
@@ -40,4 +40,4 @@ const Footer = React.createClass({
     }
 });
 
-export default Footer;
+export default Footer; 

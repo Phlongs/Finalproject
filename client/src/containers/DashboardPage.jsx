@@ -14,9 +14,22 @@ class DashboardPage extends React.Component {
     this.state = {
       errors: {},
       secretData: '',
-      firstName: '',
-      lastName: '',
-      education: '',
+      userUpdate: {
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        education: '',
+        experience: '',
+        about: '',
+        port1Name: '',
+        port1: '',
+        port2Name: '',
+        port2: '',
+        port3Name: '',
+        port3: ''
+      },
+      userInfo: {},
       file: {}
     };
     this.processForm = this.processForm.bind(this);
@@ -26,22 +39,24 @@ class DashboardPage extends React.Component {
   /**
    * This method will be executed after initial rendering.
    */
-  componentDidMount() {
+  componentWillMount() {
+    console.log('componentdidmount endpoint') 
+        const xhr = new XMLHttpRequest();
+        xhr.open("get","/public/biopage");
+        xhr.setRequestHeader("Content-type",'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+        xhr.responseType = "json";
+        xhr.addEventListener('load', () =>{
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('get', '/api/dashboard');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // set the authorization HTTP header
-    xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        this.setState({
-          secretData: xhr.response
+            if(xhr.status === 200){
+                this.setState({
+                    userInfo: xhr.response
+                });
+               console.log('userInfo',userInfo) 
+            }
+           
         });
-      }
-    });
-    xhr.send();
+        xhr.send();
   }
     uploadImage(imageFile) {
       return new Promise((resolve, reject) => {
@@ -128,31 +143,35 @@ class DashboardPage extends React.Component {
 
         // make a redirect
         // this.context.router.replace('/user');
-      } else {
-        // failure
-
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
-
-        this.setState({
-
-        });
-      }
+      } 
     });
 
     xhr.send(formData);
     this.context.router.replace('/BioPage');
+  }
+
+    changeUser(event) {
+      console.log('changeUser')
+    const field = event.target.name;
+    const userUpdate = this.state.userInfo;
+    console.log('userUpdate:',userUpdate)
+    userUpdate[field] = event.target.value;
+
+    this.setState({
+      userUpdate
+    });
   }
   /**
    * Render the component.
    */
   render() {
     return (
-
+        
       <Dashboard
-        secretData={this.state.secretData}
+        user={this.state.userUpdate}
         onSubmit={this.processForm}
         onChange={this.uploadImage}
+        userUpdate={this.changeUser}
       />
     );
   }

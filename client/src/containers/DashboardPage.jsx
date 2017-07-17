@@ -39,25 +39,7 @@ class DashboardPage extends React.Component {
   /**
    * This method will be executed after initial rendering.
    */
-  componentWillMount() {
-    console.log('componentdidmount endpoint') 
-        const xhr = new XMLHttpRequest();
-        xhr.open("get","/public/biopage");
-        xhr.setRequestHeader("Content-type",'application/x-www-form-urlencoded');
-        xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
-        xhr.responseType = "json";
-        xhr.addEventListener('load', () =>{
 
-            if(xhr.status === 200){
-                this.setState({
-                    userInfo: xhr.response
-                });
-               console.log('userInfo',userInfo) 
-            }
-           
-        });
-        xhr.send();
-  }
     uploadImage(imageFile) {
       return new Promise((resolve, reject) => {
         let imageFormData = new FormData();
@@ -168,10 +150,10 @@ class DashboardPage extends React.Component {
     return (
         
       <Dashboard
-        user={this.state.userUpdate}
+
         onSubmit={this.processForm}
         onChange={this.uploadImage}
-        userUpdate={this.changeUser}
+
       />
     );
   }

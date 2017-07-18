@@ -5,7 +5,7 @@ const Cards = () => (
   <div id="card-set">
   <Card id="card-1" className="landing-page-cards">
     <CardMedia >
-      <i className="fa fa-rocket fa-3x" aria-hidden="true"></i>
+      
 
     </CardMedia>
     <CardTitle title="Step 1" subtitle="Sign up" />
@@ -16,7 +16,7 @@ const Cards = () => (
 
   <Card id="card-2" className="landing-page-cards">
     <CardMedia >
-      <i className="fa fa-star fa-3x" aria-hidden="true"></i>
+      
 
     </CardMedia>
     <CardTitle title="Step 2" subtitle="Fill out a form" />
@@ -28,7 +28,7 @@ const Cards = () => (
 
   <Card id="card-3" className="landing-page-cards">
     <CardMedia >
-<i className="fa fa-paint-brush fa-3x" aria-hidden="true"></i>
+
     </CardMedia>
     <CardTitle title="Step 3" subtitle="Create your very own Website" />
     <CardText>

@@ -8,9 +8,9 @@ const Cards = () => (
       <i className="fa fa-rocket fa-3x" aria-hidden="true"></i>
 
     </CardMedia>
-    <CardTitle title="Fast" subtitle="Create a profile in minutes." />
+    <CardTitle title="Step 1" subtitle="Sign up" />
     <CardText>
-      Simply fill out a form, and you're done!
+      Simply signup and create a username.
     </CardText>
   </Card>
 
@@ -19,9 +19,9 @@ const Cards = () => (
       <i className="fa fa-star fa-3x" aria-hidden="true"></i>
 
     </CardMedia>
-    <CardTitle title="Impressive" subtitle="Create a memorable web presence." />
+    <CardTitle title="Step 2" subtitle="Fill out a form" />
     <CardText>
-      Have the freedom to portray who you are outside of a boring resume.
+      Fill out a simple form and personalize it with a profile photo and a background photo.
     </CardText>
     
   </Card>
@@ -30,9 +30,9 @@ const Cards = () => (
     <CardMedia >
 <i className="fa fa-paint-brush fa-3x" aria-hidden="true"></i>
     </CardMedia>
-    <CardTitle title="Dynamic" subtitle="You're free to change your mind." />
+    <CardTitle title="Step 3" subtitle="Create your very own Website" />
     <CardText>
-          You can make as many updates to your page that you'd like.
+          Create your own professional website in 3 easy steps!
 
     </CardText>
     

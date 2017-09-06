@@ -50,7 +50,7 @@ const Dashboard = ({
       title="You're on your way to creating your very own website"
       subtitle="Please fill out form below:"
     />
-    
+
 
     <form formMethod="post" onSubmit={onSubmit} >
 
@@ -105,7 +105,7 @@ const Dashboard = ({
           floatingLabelText="Current Title"
           name="experience"
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}          
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
       </div>
 
@@ -115,7 +115,7 @@ const Dashboard = ({
           name="about"
           style = {{width: 600}}
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}          
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
       </div>
 
@@ -125,7 +125,7 @@ const Dashboard = ({
           name="resume"
           style = {{width: 600}}
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}          
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
       </div>
 
@@ -134,13 +134,13 @@ const Dashboard = ({
           floatingLabelText="Name to Project 1"
           name="port1Name"
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         /><span>  </span>
         <TextField
           floatingLabelText="Link to Project 1"
           name="port1"
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
       </div>
 
@@ -149,13 +149,13 @@ const Dashboard = ({
           floatingLabelText="Name to Project 2"
           name="port2Name"
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         /><span>  </span>
         <TextField
           floatingLabelText="Link to Project 2"
           name="port2"
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
       </div>
 
@@ -164,15 +164,60 @@ const Dashboard = ({
           floatingLabelText="Name to Project 3"
           name="port3Name"
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         /><span>  </span>
         <TextField
           floatingLabelText="Link to Project 3"
           name="port3"
           floatingLabelStyle={styles.floatingLabelStyle}
-          floatingLabelFocusStyle={styles.floatingLabelFocusStyle} 
+          floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         />
         </div>
+
+        <div className="field-line">
+          <TextField
+            floatingLabelText="Name to Project 4"
+            name="port4Name"
+            floatingLabelStyle={styles.floatingLabelStyle}
+            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+          /><span>  </span>
+          <TextField
+            floatingLabelText="Link to Project 4"
+            name="port4"
+            floatingLabelStyle={styles.floatingLabelStyle}
+            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+          />
+          </div>
+
+          <div className="field-line">
+            <TextField
+              floatingLabelText="Name to Project 5"
+              name="port5Name"
+              floatingLabelStyle={styles.floatingLabelStyle}
+              floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+            /><span>  </span>
+            <TextField
+              floatingLabelText="Link to Project 5"
+              name="port5"
+              floatingLabelStyle={styles.floatingLabelStyle}
+              floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+            />
+            </div>
+
+            <div className="field-line">
+              <TextField
+                floatingLabelText="Name to Project 6"
+                name="port6Name"
+                floatingLabelStyle={styles.floatingLabelStyle}
+                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+              /><span>  </span>
+              <TextField
+                floatingLabelText="Link to Project 6"
+                name="port6"
+                floatingLabelStyle={styles.floatingLabelStyle}
+                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+              />
+              </div>
 
       <RaisedButton
          containerElement="label" // <-- Just add me!

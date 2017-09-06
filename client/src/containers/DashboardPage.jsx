@@ -29,7 +29,7 @@ class DashboardPage extends React.Component {
       return new Promise((resolve, reject) => {
         let imageFormData = new FormData();
         let fileType = imageFile.target.name;
-        
+
         imageFormData.append(fileType, imageFile.target.files[0]);
 
         var xhr = new XMLHttpRequest();
@@ -85,10 +85,17 @@ class DashboardPage extends React.Component {
     const port2Name = encodeURIComponent(event.target.port2Name.value);
     const port3 = encodeURIComponent(event.target.port3.value);
     const port3Name = encodeURIComponent(event.target.port3Name.value);
+    const port4 = encodeURIComponent(event.target.port4.value);
+    const port4Name = encodeURIComponent(event.target.port4Name.value);
+    const port5 = encodeURIComponent(event.target.port5.value);
+    const port5Name = encodeURIComponent(event.target.port5Name.value);
+    const port6 = encodeURIComponent(event.target.port6.value);
+    const port6Name = encodeURIComponent(event.target.port6Name.value);
 
     const formData = `firstName=${firstName}&lastName=${lastName}&education=${education}
     &phone=${phone}&experience=${experience}&port1=${port1}&port1Name=${port1Name}
-    &port2=${port2}&port2Name=${port2Name}&port3=${port3}&port3Name=${port3Name}&email=${email}&about=${about}&resume=${resume}`;
+    &port2=${port2}&port2Name=${port2Name}&port3=${port3}&port3Name=${port3Name}&port4=${port4}&port4Name=${port4Name}
+    &port5=${port5}&port5Name=${port5Name}&port6=${port6}&port6Name=${port6Name}&email=${email}&about=${about}&resume=${resume}`;
 
     //create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -111,7 +118,7 @@ class DashboardPage extends React.Component {
 
         // make a redirect
         // this.context.router.replace('/user');
-      } 
+      }
     });
 
     xhr.send(formData);
@@ -123,7 +130,7 @@ class DashboardPage extends React.Component {
    */
   render() {
     return (
-        
+
       <Dashboard
 
         onSubmit={this.processForm}

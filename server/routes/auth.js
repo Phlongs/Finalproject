@@ -174,7 +174,7 @@ router.post('/login', (req, res, next) => {
 
 router.post('/bio', (req,res,next)=>{
   const token = req.headers.authorization.split(' ')[1];
-    
+
   jwt.verify(token,config.jwtSecret,(err,decoded) => {
     if(err){ res.status(401).end();}
     const userId = decoded.sub;
@@ -184,14 +184,14 @@ router.post('/bio', (req,res,next)=>{
         }
     var arr = [];
     var numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-    
+
     function shuffle(o) {
     for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     var rand = o.pop();
     return rand;
     };
 
-    for(var i = 1; i<4; i++){
+    for(var i = 1; i<7; i++){
       arr[i] = shuffle(numbers);
     }
 
@@ -206,12 +206,21 @@ router.post('/bio', (req,res,next)=>{
     user.port2Name = req.body.port2Name;
     user.port3 = req.body.port3;
     user.port3Name = req.body.port3Name;
+    user.port4 = req.body.port4;
+    user.port4Name = req.body.port4Name;
+    user.port5 = req.body.port5;
+    user.port5Name = req.body.port5Name;
+    user.port6 = req.body.port6;
+    user.port6Name = req.body.port6Name;
     user.email = req.body.email;
     user.about = req.body.about;
     user.resume = req.body.resume;
     user.port1Pic = "../../img/portfolio/thumbnails/" + arr[1] + ".jpg";
     user.port2Pic = "../../img/portfolio/thumbnails/" + arr[2] + ".jpg";
     user.port3Pic = "../../img/portfolio/thumbnails/" + arr[3] + ".jpg";
+    user.port4Pic = "../../img/portfolio/thumbnails/" + arr[4] + ".jpg";
+    user.port5Pic = "../../img/portfolio/thumbnails/" + arr[5] + ".jpg";
+    user.port6Pic = "../../img/portfolio/thumbnails/" + arr[6] + ".jpg";
 
     user.save(user, function(err){
       if(err) {
@@ -234,7 +243,7 @@ router.post('/uploads', (req, res) => {
     const userId = decoded.sub;
   form.parse(req, (err, fields, files) => {
     let fileType = Object.getOwnPropertyNames(files);
-    
+
      if(fileType[0] === 'profilePic') {
      let {path: tempPath, originalFilename} = files.profilePic[0];
      let profilePicPath = files.profilePic[0].path;
@@ -260,7 +269,7 @@ router.post('/uploads', (req, res) => {
         });
       });
     };
-    } 
+    }
 
     else if(fileType[0] === 'backgroundPic') {
      let {path: tempPath, originalFilename} = files.backgroundPic[0];
@@ -288,7 +297,7 @@ router.post('/uploads', (req, res) => {
       });
     };
     }
-      
+
 });
 });
 });

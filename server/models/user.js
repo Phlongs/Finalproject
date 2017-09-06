@@ -26,6 +26,15 @@ const UserSchema = new mongoose.Schema({
   port3: String,
   port3Name: String,
   port3Pic: String,
+  port4: String,
+  port4Name: String,
+  port4Pic: String,
+  port5: String,
+  port5Name: String,
+  port5Pic: String,
+  port6: String,
+  port6Name: String,
+  port6Pic: String,
   profilePic: String,
   backgroundPic: String
 });
